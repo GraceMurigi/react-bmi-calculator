@@ -7,6 +7,11 @@ import '../styles/Form.css';
 class Form extends React.Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			bmi: ''
+
+		};
+
 		this.heightChange = this.heightChange.bind(this);
 		this.weightChange = this.weightChange.bind(this);
 		this.computeBmi = this.computeBmi.bind(this);
@@ -56,10 +61,10 @@ class Form extends React.Component {
                 	<Button label="SUBMIT" onClick={ this.computeBmi } />
             	</div>
             	<div className="row">
-    				<h3>BMI = {this.state.bmi}</h3>
-				</div>1
+    				<h3>BMI: {this.state.bmi}</h3>
+				</div>
 				<div className="row">
-    				<h3>{this.state.bmiClass}</h3>
+    				<h3>Status: {this.state.bmiClass}</h3>
 				</div>
 			</div>
 		)
