@@ -1,10 +1,14 @@
 import React from 'react';
+import '../styles/Button.css';
+
 
 class Button extends React.Component {
 	render() {
 		return(
-			<div onClick={this.props.onClick}>
+			<div>
+				<button class="button" onClick={this.props.onClick}>
 				{this.props.label}
+				</button>
 			</div>
 			)
 	}

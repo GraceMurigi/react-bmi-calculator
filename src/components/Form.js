@@ -22,11 +22,12 @@ class Form extends React.Component {
 	}
 
 	heightChange(heightValue) {
- 	   this.setState({ height:  heightValue });
+ 	   this.setState({ height:  heightValue / 100 });
 	}
 
 	computeBmi() {
-		let bmiValue = ( this.state.weight / this.state.height) / this.state.height;
+		let calcBmi = ( this.state.weight / this.state.height) / this.state.height;
+		let bmiValue = calcBmi.toFixed(1)
     	this.setState({ bmi : bmiValue });
     	let bmiClass = this.getBmi(bmiValue);
     	this.setState({ bmiClass : bmiClass });
@@ -50,9 +51,13 @@ class Form extends React.Component {
 
 	render() {
 		return(
-			<div> 
+			<div className="container"> 
+				<div className="title">
+					<h1>BMI Healthy Weight Calculator</h1>
+				</div>
+				<hr />
 				<div className="row">
-					<TextInput label="Height" placeholder="Enter height in meters" onChange={this.heightChange} />
+					<TextInput label="Height" placeholder="Enter height in centimeters" onChange={this.heightChange} />
 				</div>
 				<div className="row">
 					<TextInput label="Weight" placeholder="Enter Weight in kg" onChange={this.weightChange} />
@@ -60,13 +65,14 @@ class Form extends React.Component {
 				<div className="row">
                 	<Button label="SUBMIT" onClick={ this.computeBmi } />
             	</div>
-            	<div className="row">
-    				<h3>BMI: {this.state.bmi}</h3>
+            	<div className="results">
+    				<h2>BMI: {this.state.bmi}</h2>
 				</div>
-				<div className="row">
-    				<h3>Status: {this.state.bmiClass}</h3>
-				</div>
+				<div className="results">
+    				<h2>Status: {this.state.bmiClass}</h2>
+				</div>	
 			</div>
+			
 		)
 
 	}

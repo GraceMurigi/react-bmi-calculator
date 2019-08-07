@@ -1,4 +1,5 @@
 import React from 'react';
+import "../styles/TextInput.css";
 
 class TextInput extends React.Component {
 
